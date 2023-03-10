@@ -8,15 +8,15 @@ const api = 'https://jsonplaceholder.typicode.com/photos?albumId=1';
 const App = () => {
   const [moveableComponents, setMoveableComponents] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [data, setData] = useState([]);
+  const [img, setImg] = useState([]);
 
   useEffect(() => {
     fetch(api)
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        setData(data);
+      .then((img) => {
+        setImg(img);
       });
   }, []);
 
@@ -76,7 +76,7 @@ const App = () => {
         }}
       >
         {moveableComponents.map((item, index) => (
-          <Component {...item} key={index} updateMoveable={updateMoveable} setSelected={setSelected} isSelected={selected === item.id} image={data[index]} />
+          <Component {...item} key={index} updateMoveable={updateMoveable} setSelected={setSelected} isSelected={selected === item.id} image={img[index]} />
         ))}
       </div>
     </main>
